@@ -22,6 +22,7 @@ export default function App() {
       id: +new Date(),
       title: title,
       body: body,
+      archived: false,
       createdAt: new Date(),
     };
     setNotes((prevNotes) => [...prevNotes, newNotes]);
@@ -32,30 +33,19 @@ export default function App() {
     setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
   }
 
-  // function onDeleteData(id) {
-  //   const DataNotes = Notes.filter((item) => item.id !== id);
-  //   setNotes(DataNotes);
-  //   console.log(DataNotes);
-  // }
+  function onArchiveData(id) {
+    setNotes((prevNotes) => prevNotes.map((note) => (note.id === id ? { ...note, archived: !note.archived } : note)));
+  }
 
   function SearchNotes(e) {
     setSearch(e.target.value);
     console.log(search);
   }
 
-  function onArchiveData(id) {
-    setNotes((prevNotes) => prevNotes.map((note) => (note.id === id ? { ...note, archived: !note.archived } : note)));
-  }
-
-  const FilterNotes = Notes.filter((note) => {
-    const searchData = search.toLowerCase();
-    return note.title.toLowerCase().includes(searchData) || note.body.toLowerCase().includes(searchData);
-  });
-
   return (
     <>
-      <HeaderNotes onSearch={SearchNotes} />
-      <BodyNotes onArchive={onArchiveData} SearchItem={search} FilterNotes={FilterNotes} notes={Notes} FormatDate={FormatDate} addNotes={addNotesData} onDelete={onDeleteData} />
+      <HeaderNotes onSearch={SearchNotes} SearchItem={search} />
+      <BodyNotes onArchive={onArchiveData} SearchItem={search} notes={Notes} FormatDate={FormatDate} addNotes={addNotesData} onDelete={onDeleteData} />
     </>
   );
 }

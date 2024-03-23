@@ -2,7 +2,7 @@ import React from "react";
 import ArchiveButton from "./ArchiveButton";
 import DeleteButton from "./DeleteButton";
 
-export default function ActiveNotes({ id, title, FormatDate, body, createdAt, onDelete, onArchive }) {
+export default function ActiveNotes({ id, title, FormatDate, body, createdAt, onDelete, onArchive, SearchItem, FilterNotes }) {
   return (
     <>
       <div className="notes-list">
