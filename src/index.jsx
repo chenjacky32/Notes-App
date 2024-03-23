@@ -15,7 +15,7 @@ export default function App() {
 
   const [Notes, setNotes] = useState(GetData);
   const [search, setSearch] = useState("");
-  const [Archive, setArchive] = useState(false);
+  const [Archive, setArchive] = useState([]);
 
   function addNotesData({ title, body }) {
     const newNotes = {
@@ -29,10 +29,14 @@ export default function App() {
   }
 
   function onDeleteData(id) {
-    const DataNotes = Notes.filter((item) => item.id !== id);
-    setNotes(DataNotes);
-    console.log(DataNotes);
+    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
   }
+
+  // function onDeleteData(id) {
+  //   const DataNotes = Notes.filter((item) => item.id !== id);
+  //   setNotes(DataNotes);
+  //   console.log(DataNotes);
+  // }
 
   function SearchNotes(e) {
     setSearch(e.target.value);
@@ -40,8 +44,7 @@ export default function App() {
   }
 
   function onArchiveData(id) {
-    const updateData = Notes.filter((note) => note.id === id).map((note) => (note.archived = !note.archived));
-    setArchive(updateData);
+    setNotes((prevNotes) => prevNotes.map((note) => (note.id === id ? { ...note, archived: !note.archived } : note)));
   }
 
   const FilterNotes = Notes.filter((note) => {

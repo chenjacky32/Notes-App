@@ -13,7 +13,7 @@ export default function ActiveNotes({ id, title, FormatDate, body, createdAt, on
             <p className="note-item__body">{body}</p>
           </div>
           <div className="note-item__action">
-            <ArchiveButton onArchive={onArchive} id={id} />
+            <ArchiveButton onArchive={() => onArchive(id)} id={id} />
             <DeleteButton onDelete={onDelete} id={id} />
           </div>
         </div>

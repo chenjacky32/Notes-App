@@ -1,4 +1,6 @@
 import React from "react";
+import ArchiveButton from "./ArchiveButton";
+import DeleteButton from "./DeleteButton";
 
 export default function ArchiveNotes({ id, title, FormatDate, body, createdAt, onDelete, onArchive }) {
   return (
@@ -11,7 +13,7 @@ export default function ArchiveNotes({ id, title, FormatDate, body, createdAt, o
             <p className="note-item__body">{body}</p>
           </div>
           <div className="note-item__action">
-            <ArchiveButton onArchive={onArchive} id={id} />
+            <ArchiveButton onArchive={() => onArchive(id)} id={id} />
             <DeleteButton onDelete={onDelete} id={id} />
           </div>
         </div>
