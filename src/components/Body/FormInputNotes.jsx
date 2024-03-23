@@ -7,20 +7,16 @@ export default function FormInputNotes({ addNotes }) {
   const [sisa, setSisa] = useState("");
   const MaxLength = 50;
 
-  //   Event
   function EventGantiJudul(e) {
     const Hitung = e.target.value;
     if (Hitung.length <= MaxLength) {
       setSisa(Hitung);
       setJudul(Hitung);
     }
-
-    // console.log(judul);
   }
 
   function EventGantiIsi(e) {
     setIsi(e.target.value);
-    // console.log(isi);
   }
 
   function EventHandleSubmit(e) {

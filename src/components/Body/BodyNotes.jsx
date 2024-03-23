@@ -3,7 +3,7 @@ import MakeNotes from "./MakeNotes";
 import ActiveNotes from "./ActiveNotes";
 import ArchiveNotes from "./ArchiveNotes";
 
-export default function BodyNotes({ onArchive, notes, FormatDate, addNotes, onDelete, SearchItem, FilterNotes }) {
+export default function BodyNotes({ onArchive, notes, FormatDate, addNotes, onDelete, SearchItem }) {
   const activeNotes = notes.filter((note) => !note.archived && (note.title.toLowerCase().includes(SearchItem.toLowerCase()) || note.body.toLowerCase().includes(SearchItem.toLowerCase())));
   const archiveNotes = notes.filter((note) => note.archived && (note.title.toLowerCase().includes(SearchItem.toLowerCase()) || note.body.toLowerCase().includes(SearchItem.toLowerCase())));
 
